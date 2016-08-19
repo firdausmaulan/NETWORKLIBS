@@ -19,12 +19,10 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class OkhttpActivity extends AppCompatActivity {
+public class OkhttpGet extends AppCompatActivity {
 
     private TextView tvTest;
     private ProgressDialog progressDialog;
-    public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-    public String json = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,16 +31,7 @@ public class OkhttpActivity extends AppCompatActivity {
 
         tvTest = (TextView) findViewById(R.id.tvTest);
         progressDialog = new ProgressDialog(this);
-        JSONObject jObject = new JSONObject();
-        try {
-            jObject.put("success", "true");
-            jObject.put("message", "Behasil Mendapat Data Dari Server");
-        } catch (JSONException e) {
-            showMessage("JSON Error");
-        }
-        Log.i("json", jObject.toString());
-        json = jObject.toString();
-        new BackgroundTask().execute("http://firdaus91.web.id/test/raw.php");
+        new BackgroundTask().execute("http://firdaus91.web.id/test/get.php?username=maulana&password=firdaus");
     }
 
     private class BackgroundTask extends AsyncTask<String, Void, String> {
@@ -51,10 +40,8 @@ public class OkhttpActivity extends AppCompatActivity {
         protected String doInBackground(String... url) {
             Response response = null;
             OkHttpClient client = new OkHttpClient();
-            //RequestBody formBody = new FormBody.Builder().addEncoded(JSON, url[1]).build();
-            RequestBody formBody = RequestBody.create(JSON, json);
-            Request request = new Request.Builder().url(url[0]).post(formBody)
-                    .build();
+
+            Request request = new Request.Builder().url(url[0]).build();
             try {
                 response = client.newCall(request).execute();
                 return response.body().string();

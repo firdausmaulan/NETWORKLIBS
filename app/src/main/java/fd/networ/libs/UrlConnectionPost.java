@@ -7,17 +7,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.TextView;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import fd.networ.libs.agent.HttpListener;
 import fd.networ.libs.agent.HttpRequest;
 
 
-public class UrlConnectionActivity extends AppCompatActivity implements HttpListener {
+public class UrlConnectionPost extends AppCompatActivity implements HttpListener {
 
     private TextView tvTest;
-    private String json = "";
     private ProgressDialog pDialog;
 
     @Override
@@ -26,19 +22,10 @@ public class UrlConnectionActivity extends AppCompatActivity implements HttpList
         setContentView(R.layout.activity_main);
 
         tvTest = (TextView) findViewById(R.id.tvTest);
-        JSONObject jObject = new JSONObject();
-        try {
-            jObject.put("success", "true");
-            jObject.put("message", "Behasil Mendapat Data Dari Server");
-        } catch (JSONException e) {
-            showMessage("JSON Error");
-        }
-        Log.i("json", jObject.toString());
-        json = jObject.toString();
-        pDialog = ProgressDialog.show(UrlConnectionActivity.this, "",
-                "Mohon tunggu...", true);
-        HttpRequest.instance().request(pDialog, UrlConnectionActivity.this,
-                "http://firdaus91.web.id/test/raw.php", json, 0);
+        pDialog = ProgressDialog.show(UrlConnectionPost.this, "",
+                "Loading...", true);
+        HttpRequest.instance().request(pDialog, UrlConnectionPost.this,
+                "http://firdaus91.web.id/test/post.php", "username=maulana&password=firdaus", 0);
     }
 
     @Override

@@ -13,6 +13,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
@@ -22,7 +23,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class VolleyActivity extends AppCompatActivity {
+public class VolleyPost extends AppCompatActivity {
 
     private TextView tvTest;
     private ProgressDialog progressDialog;
@@ -33,52 +34,46 @@ public class VolleyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         progressDialog = new ProgressDialog(this);
         tvTest = (TextView) findViewById(R.id.tvTest);
-        JSONObject jObject = new JSONObject();
-        try {
-            jObject.put("success", "true");
-            jObject.put("message", "Behasil Mendapat Data Dari Server");
-        } catch (JSONException e) {
-            showMessage("JSON Error");
-        }
-        Log.i("json", jObject.toString());
-        VolleyRawPOST("http://firdaus91.web.id/test/raw.php", jObject);
+        VolleyRawPOST("http://firdaus91.web.id/test/post.php");
     }
 
-    private void VolleyRawPOST(String url, JSONObject json) {
+    private void VolleyRawPOST(String url) {
 
         progressDialog.setMessage("Loading...");
         progressDialog.setCancelable(false);
         progressDialog.show();
 
-        JsonObjectRequest jsonObjReq = new JsonObjectRequest(
-                Request.Method.POST, url, json,
-                new Response.Listener<JSONObject>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>() {
                     @Override
-                    public void onResponse(JSONObject response) {
+                    public void onResponse(String response) {
                         // Jika Sukses Mendapat Data Dari Server
                         progressDialog.dismiss();
-                        Log.i("json", response.toString());
-                        tvTest.setText(response.toString());
+                        Log.i("response", response);
+                        tvTest.setText(response);
                         showMessage("Berhasil Mendapat Data Dari Server");
                     }
-                }, new Response.ErrorListener() {
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // Jika Gagal Mendapat Data Dari Server
+                        progressDialog.dismiss();
+                        Log.i("error", error.toString());
+                        showMessage("Gagal Mendapat Data Dari Server");
+                    }
+                }){
             @Override
-            public void onErrorResponse(VolleyError error) {
-                // Jika Gagal Mendapat Data Dari Server
-                progressDialog.dismiss();
-                Log.i("json", error.toString());
-                showMessage("Gagal Mendapat Data Dari Server");
+            protected Map<String,String> getParams(){
+                Map<String,String> params = new HashMap<String, String>();
+                params.put("username","maulana");
+                params.put("password","firdaus");
+                return params;
             }
-        }) {
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                HashMap<String, String> headers = new HashMap<String, String>();
-                headers.put("Content-Type", "application/json; charset=utf-8");
-                return headers;
-            }
+
         };
         RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(jsonObjReq);
+        requestQueue.add(stringRequest);
     }
 
     private void showMessage(String message) {

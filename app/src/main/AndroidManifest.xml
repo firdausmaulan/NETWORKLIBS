@@ -17,9 +17,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="fd.networ.libs.OkhttpActivity" />
-        <activity android:name="fd.networ.libs.UrlConnectionActivity" />
-        <activity android:name="fd.networ.libs.VolleyActivity" />
+        <activity android:name=".OkhttpGet" />
+        <activity android:name=".UrlConnectionGet" />
+        <activity android:name=".VolleyGet" />
+        <activity android:name=".OkhttpPost" />
+        <activity android:name=".UrlConnectionPost" />
+        <activity android:name=".VolleyPost" />
+        <activity android:name=".OkhttpPostJson" />
+        <activity android:name=".UrlConnectionPostJson" />
+        <activity android:name=".VolleyPostJson" />
     </application>
 
 </manifest>

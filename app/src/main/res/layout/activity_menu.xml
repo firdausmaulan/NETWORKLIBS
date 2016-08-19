@@ -10,22 +10,101 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="fd.networ.libs.MainActivity">
 
-    <Button
-        android:id="@+id/btn_urlcon"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="HTTP URL CONN" />
+        android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/btn_volley"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Volley" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btn_okhttp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="OKHTTP" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:gravity="center_horizontal"
+                android:text="GET"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn_urlcon_get"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="HTTP URL CONN GET" />
+
+            <Button
+                android:id="@+id/btn_volley_get"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Volley GET" />
+
+            <Button
+                android:id="@+id/btn_okhttp_get"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="OKHTTP GET" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center_horizontal"
+                android:text="POST FORM DATA"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn_urlcon_post"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="HTTP URL CONN POST" />
+
+            <Button
+                android:id="@+id/btn_volley_post"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Volley POST" />
+
+            <Button
+                android:id="@+id/btn_okhttp_post"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="OKHTTP POST" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center_horizontal"
+                android:text="POST RAW JSON"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn_urlcon_json"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="HTTP URL CONN JSON" />
+
+            <Button
+                android:id="@+id/btn_volley_json"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Volley JSON" />
+
+            <Button
+                android:id="@+id/btn_okhttp_json"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="OKHTTP JSON" />
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>
