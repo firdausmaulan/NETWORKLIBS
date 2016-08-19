@@ -26,10 +26,10 @@ public class VolleyGet extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         progressDialog = new ProgressDialog(this);
         tvTest = (TextView) findViewById(R.id.tvTest);
-        VolleyRawPOST("http://firdaus91.web.id/test/get.php?username=maulana&password=firdaus");
+        VolleyGET("http://firdaus91.web.id/test/get.php?username=maulana&password=firdaus");
     }
 
-    private void VolleyRawPOST(String url) {
+    private void VolleyGET(String url) {
 
         progressDialog.setMessage("Loading...");
         progressDialog.setCancelable(false);
