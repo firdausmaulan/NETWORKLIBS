@@ -64,10 +64,10 @@ public class OkhttpGet extends AppCompatActivity {
             Log.i("OkHttp", result);
             progressDialog.dismiss();
             if (!result.equals("")) {
-                showMessage("Berhasil Mendapat Data Dari Server");
+                showMessage("Successfully Got Data From Server");
                 tvTest.setText(result);
             } else {
-                showMessage("Jaringan Bermasalah");
+                showMessage("Not Connect To Server");
             }
         }
     }

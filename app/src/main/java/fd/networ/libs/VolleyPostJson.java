@@ -59,7 +59,7 @@ public class VolleyPostJson extends AppCompatActivity {
                         progressDialog.dismiss();
                         Log.i("response", response.toString());
                         tvTest.setText(response.toString());
-                        showMessage("Berhasil Mendapat Data Dari Server");
+                        showMessage("Successfully Got Data From Server");
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -67,7 +67,7 @@ public class VolleyPostJson extends AppCompatActivity {
                 // Jika Gagal Mendapat Data Dari Server
                 progressDialog.dismiss();
                 Log.i("error", error.toString());
-                showMessage("Gagal Mendapat Data Dari Server");
+                showMessage("Not Connect To Server");
             }
         }) {
             @Override

@@ -31,7 +31,7 @@ public class UrlConnectionGet extends AppCompatActivity implements HttpListener 
     public int onHttpResponse(int code, String msg) {
         pDialog.dismiss();
         Log.i("msg", msg);
-        showMessage("Berhasil Mendapat Data Dari Server");
+        showMessage("Successfully Got Data From Server");
         tvTest.setText(msg);
         return 0;
     }

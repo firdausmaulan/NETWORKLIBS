@@ -102,7 +102,7 @@ public class HttpAgent implements Runnable {
 			// TODO Auto-generated catch block
 			if (queue.listener != null) {
 				System.out.println("-- http e :" + e.getMessage());
-				final String errMsg = "Tidak dapat terhubung ke jaringan. Periksa koneksi jaringan anda.";
+				final String errMsg = "Not Connect To Server";
 				responseError(queue, errMsg);
 			}
 		} finally {

@@ -43,7 +43,7 @@ public class VolleyGet extends AppCompatActivity {
                         progressDialog.dismiss();
                         Log.i("response", response);
                         tvTest.setText(response);
-                        showMessage("Berhasil Mendapat Data Dari Server");
+                        showMessage("Successfully Got Data From Server");
                     }
                 },
                 new Response.ErrorListener() {
@@ -52,7 +52,7 @@ public class VolleyGet extends AppCompatActivity {
                         // Jika Gagal Mendapat Data Dari Server
                         progressDialog.dismiss();
                         Log.i("error", error.toString());
-                        showMessage("Gagal Mendapat Data Dari Server");
+                        showMessage("Not Connect To Server");
                     }
                 });
         RequestQueue requestQueue = Volley.newRequestQueue(this);
